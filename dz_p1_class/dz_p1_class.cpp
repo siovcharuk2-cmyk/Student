@@ -4,7 +4,13 @@
 int main()
 {
     Student student;
+    std::cout << "===== Default =====\n";
+    student.showInfo();
 
+    std::cout << "\n===== Initialized =====\n";
+    Student student1{ { "Ivan","Ivanenko","Ivanovich" },{2, 9, 2020},{"Oxford","Odesa","England"},{"Lviv","Ukraine"},"0988971015",56};
+    student1.showInfo();
+    
     student.setPib({ "Olexandr", "Ovcharuk", "Igorovich" });
     student.setBirthdate({ 11, 9, 2009 });
     student.setLocation({ "Rivne", "Ukraine" });
@@ -12,25 +18,7 @@ int main()
     student.setSchool({ "IT Step", "Cloud", "Ukraine" });
     student.setGroupNumber(511);
 
-    std::cout << "================================================" << std::endl;
-
-    Pib pib = student.getPib();
-    std::cout << pib.name << " " << pib.surname << " " << pib.father << std::endl;
-    
-    Birthdate birthdate = student.getBirthdate();
-    std::cout << birthdate.day << "/" << birthdate.month << "/" << birthdate.year << std::endl;
-
-    Location location = student.getLocation();
-    std::cout << location.city << " / " << location.country << std::endl;
-
-    School school = student.getSchool();
-    std::cout << school.name << " / " << school.city << " / " << school.country << std::endl;
-
-    std::cout << "Phone: " << student.getPhoneNumber() << std::endl;
-
-    std::cout << "Group: " << student.getGroupNumber() << std::endl;
-
-    std::cout << "================================================" << std::endl;
+    std::cout << "\n===== Manually filled =====\n";
 
     student.showInfo();
 }
