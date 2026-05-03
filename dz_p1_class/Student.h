@@ -97,6 +97,8 @@ struct Location
 class Student
 {
 private:
+	static int objCount;
+
 	Pib pib;
 	Birthdate birthdate;
 	School school;
@@ -112,6 +114,7 @@ public:
 		location{ l },
 		group_number{ (unsigned int)g_n }
 	{
+		objCount++;
 		if (p_n) strcpy_s(phone_number, 11, p_n);
 		else strcpy_s(phone_number, 11, "0000000000");
 	}
@@ -142,5 +145,7 @@ public:
 	int getGroupNumber();
 
 	void showInfo();
+
+	static int getObjCount();
 };
 

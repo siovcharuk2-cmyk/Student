@@ -21,4 +21,6 @@ int main()
     std::cout << "\n===== Manually filled =====\n";
 
     student.showInfo();
+
+    std::cout << "\nNumber of created Students: " << Student::getObjCount() << std::endl;
 }

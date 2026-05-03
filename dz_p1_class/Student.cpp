@@ -2,6 +2,8 @@
 #include <cstring>
 #include <iostream>
 
+int Student::objCount = 0;
+
 void Student::setPib(const Pib& newPib)
 {
     delete[] pib.name;
@@ -141,3 +143,6 @@ void Student::showInfo()
     std::cout << "Country: ";
     school.country ? std::cout << school.country << std::endl : std::cout << "Empty" << std::endl;
 }
+
+
+int Student::getObjCount() { return objCount; }
