@@ -96,7 +96,7 @@ struct Location
 
 class Student
 {
-private:
+protected:
 	static int objCount;
 
 	Pib pib;
