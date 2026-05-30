@@ -26,8 +26,19 @@ int main()
     //std::cout << "\nNumber of created Students: " << Student::getObjCount() << std::endl;
 
 
-    Aspirant aspirant{ { "Ivan","Ivanenko","Ivanovich" },{2, 9, 2020},{"Oxford","Odesa","England"},{"Lviv","Ukraine"},"0988971015",56, "Optimization of neural network models for real-time object recognition" };
-    aspirant.showInfo();
+    //Aspirant aspirant{ { "Ivan","Ivanenko","Ivanovich" },{2, 9, 2020},{"Oxford","Odesa","England"},{"Lviv","Ukraine"},"0988971015",56, "Optimization of neural network models for real-time object recognition" };
+    //aspirant.showInfo();
 
-    std::cout << "\nNumber of created Students: " << Student::getObjCount() << std::endl;
+    //std::cout << "\nNumber of created Students: " << Student::getObjCount() << std::endl;
+
+	std::cout << "===== Student 1 =====\n";
+	Student student1{ { "Ivan","Ivanenko","Ivanovich" },{2, 9, 2020},{"Oxford","Odesa","England"},{"Lviv","Ukraine"},"0988971015",56 };
+	student1.showInfo();
+	std::cout << "===== Saved Student 1 to file =====\n";
+	student1.save();
+
+	std::cout << "\n===== Loaded Student 2 from file =====\n";
+	Student student2;
+	student2.load();
+	student2.showInfo();
 }

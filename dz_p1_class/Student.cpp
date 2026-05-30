@@ -144,5 +144,58 @@ void Student::showInfo()
     school.country ? std::cout << school.country << std::endl : std::cout << "Empty" << std::endl;
 }
 
+void Student::save()
+{
+	std::ofstream outFile("studentData.txt");
+	if (outFile.is_open())
+	{
+		outFile << pib.name << std::endl;
+		outFile << pib.surname << std::endl;
+		outFile << pib.father << std::endl;
+		outFile << birthdate.day << " " << birthdate.month << " " << birthdate.year << std::endl;
+		outFile << phone_number << std::endl;
+		outFile << location.city << std::endl;
+		outFile << location.country << std::endl;
+		outFile << school.name << std::endl;
+		outFile << school.city << std::endl;
+		outFile << school.country << std::endl;
+		outFile.close();
+	}
+	else
+		std::cerr << "Cannot open file for writing." << std::endl;
+}
+
+void Student::load()
+{
+    std::ifstream inFile("studentData.txt");
+    if (inFile.is_open())
+    {
+        char buffer[256];
+        inFile.getline(buffer, 256);
+        setPib({ buffer, pib.surname, pib.father });
+        inFile.getline(buffer, 256);
+        setPib({ pib.name, buffer, pib.father });
+        inFile.getline(buffer, 256);
+        setPib({ pib.name, pib.surname, buffer });
+        inFile >> birthdate.day >> birthdate.month >> birthdate.year;
+        inFile.ignore();
+        inFile.getline(buffer, 256);
+        setPhone(buffer);
+        inFile.getline(buffer, 256);
+        setLocation({ buffer, location.country });
+        inFile.getline(buffer, 256);
+        setLocation({ location.city, buffer });
+        inFile.getline(buffer, 256);
+        setSchool({ buffer, school.city, school.country });
+        inFile.getline(buffer, 256);
+        setSchool({ school.name, buffer, school.country });
+        inFile.getline(buffer, 256);
+        setSchool({ school.name, school.city, buffer });
+        inFile.close();
+    }
+    else
+        std::cerr << "Cannot open file for reading." << std::endl;
+}
+
 
 int Student::getObjCount() { return objCount; }

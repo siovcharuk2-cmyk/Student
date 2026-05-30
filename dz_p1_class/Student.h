@@ -1,5 +1,6 @@
 #pragma once
 #include <cstring>
+#include <fstream>
 
 struct Pib
 {
@@ -145,6 +146,8 @@ public:
 	int getGroupNumber();
 
 	void showInfo();
+	void save();
+	void load();
 
 	static int getObjCount();
 };
